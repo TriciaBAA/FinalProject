@@ -11,6 +11,10 @@ Route::get('/welcome', function () {
 
 Route::get('/', [DashboardController::class, 'show']);
 
-Route::get('/gallery', [GalleryController::class, 'show']);
+Route::get('/gallery', function () {
+    return view('gallery');
+})->name('gallery');
 
-Route::get('/booking', [BookingController::class, 'show']);
+Route::get('/booking', function () {
+    return view('booking');
+})->name('booking');
