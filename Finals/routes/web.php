@@ -9,7 +9,8 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [DashboardController::class, 'show']);
+Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
+
 
 Route::get('/gallery', function () {
     return view('gallery');
