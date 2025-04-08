@@ -15,7 +15,7 @@
                 <a href="{{ route('dashboard') }}" class="block py-2 px-4 rounded hover:bg-blue-700">Home</a>
                 <a href="{{ route('gallery') }}" class="block py-2 px-4 rounded hover:bg-blue-700">Gallery</a>
                 <a href="{{ route('booking') }}" class="block py-2 px-4 rounded hover:bg-blue-700">Booking</a>
-                <a href="#" class="block py-2 px-4 rounded hover:bg-blue-700">My Profile</a>
+                <a href="{{ route('profile') }}" class="block py-2 px-4 rounded hover:bg-blue-700">My Profile</a>
             </nav>
         </aside>
         
