@@ -101,10 +101,10 @@
     </div>
     <!-- Auth Buttons (Design Only) -->
     <div class="fixed bottom-5 right-5 space-x-3" style="font-family: 'Lovelo Juno', sans-serif;">
-        <a href="#" class="bg-[#14110d] text-white px-5 py-2 rounded-full shadow-md hover:bg-[#362c24] transition duration-300">
+        <a href="{{ route('login') }}" class="bg-[#14110d] text-white px-5 py-2 rounded-full shadow-md hover:bg-[#362c24] transition duration-300">
             Login
         </a>
-        <a href="#" class="bg-[#f8f5ec] text-[#14110d] border border-[#14110d] px-5 py-2 rounded-full shadow-md hover:bg-[#ddd4c4] transition duration-300">
+        <a href="{{ route('register') }}" class="bg-[#f8f5ec] text-[#14110d] border border-[#14110d] px-5 py-2 rounded-full shadow-md hover:bg-[#ddd4c4] transition duration-300">
             Sign Up
         </a>
     </div>

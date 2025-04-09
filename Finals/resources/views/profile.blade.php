@@ -31,12 +31,13 @@
             <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center" style="font-family: 'Lovelo Juno', sans-serif;">
                 <h3 class="text-2xl font-medium mb-6 text-[#14110d]">Continue as:</h3>
                 <div class="flex space-x-4 justify-center">
-                    <button class="w-1/2 bg-[#bbafa1] text-white p-3 rounded-md hover:bg-[#a99e91] transition">
+                    <button onclick="window.location.href='{{ route('login') }}'" class="w-1/2 bg-[#bbafa1] text-white p-3 rounded-md hover:bg-[#a99e91] transition">
                         Login
                     </button>
-                    <button class="w-1/2 bg-[#362c24] text-white p-3 rounded-md hover:bg-[#14110d]">
+                    <button onclick="window.location.href='{{ route('register') }}'" class="w-1/2 bg-[#362c24] text-white p-3 rounded-md hover:bg-[#14110d]">
                         Sign Up
                     </button>
+                    
                 </div>
 
                 <!-- Optional Info Section -->
