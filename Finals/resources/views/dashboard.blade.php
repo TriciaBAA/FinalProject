@@ -16,17 +16,17 @@
         <header class="w-full bg-[#14110d] text-white p-5 flex items-center justify-between" style="font-family: 'Lovelo Juno', sans-serif;">
             <h1 class="text-2xl font-bold">Frame Finders</h1>
             <nav class="space-x-6">
-                <a href="{{ route('dashboard') }}" class="py-2 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Home</a>
-                <a href="{{ route('gallery') }}" class="py-2 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Gallery</a>
-                <a href="{{ route('booking') }}" class="py-2 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Booking</a>
-                <a href="{{ route('profile') }}" class="py-2 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">My Profile</a>
+                <a href="{{ route('dashboard') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Home</a>
+                <a href="{{ route('gallery') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Gallery</a>
+                <a href="{{ route('booking') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Booking</a>
+                <a href="{{ route('profile') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">My Profile</a>
             </nav>
         </header>
         
         <!-- Main Content -->
         <main class="flex-1 p-10 overflow-auto">
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h1 class="text-6xl font-semibold text-gray-800" style="font-family: 'Lovelo Juno', sans-serif;">Welcome!</h1>
+                <h1 class="text-6xl font-semibold text-gray-800" style="font-family: 'Lovelo Juno', sans-serif;">Welcome Frame Finders!</h1>
                 <p class="mt-2 text-gray-600 text-lg" style="font-family: 'Fira Code', monospace;">
                     Find yourself a skilled photographer who understands your vision. Explore stunning galleries, make bookings with ease, and manage your profile all in one place.
                 </p>

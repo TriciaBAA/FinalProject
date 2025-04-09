@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lovelo+Juno&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100">
-    <div class="flex h-screen">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-blue-900 text-white p-5 space-y-6">
-            <h1 class="text-2xl font-bold text-center">Frame Finders</h1>
-            <nav class="mt-10 space-y-4">
-                <a href="{{ route('dashboard') }}" class="block py-2 px-4 rounded hover:bg-blue-700">Home</a>
-                <a href="{{ route('gallery') }}" class="block py-2 px-4 rounded hover:bg-blue-700">Gallery</a>
-                <a href="{{ route('booking') }}" class="block py-2 px-4 rounded hover:bg-blue-700">Booking</a>
-                <a href="{{ route('profile') }}" class="block py-2 px-4 rounded hover:bg-blue-700">My Profile</a>
+<body class="bg-[#f8f5ec]">
+    <div class="min-h-screen">
+
+        <!-- Top Navbar -->
+        <header class="w-full bg-[#14110d] text-white p-5 flex items-center justify-between" style="font-family: 'Lovelo Juno', sans-serif;">
+            <h1 class="text-2xl font-bold">Frame Finders</h1>
+            <nav class="space-x-6">
+                <a href="{{ route('dashboard') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Home</a>
+                <a href="{{ route('gallery') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Gallery</a>
+                <a href="{{ route('booking') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">Booking</a>
+                <a href="{{ route('profile') }}" class="py-6 px-4 rounded hover:bg-[#362c24] transition-colors duration-200">My Profile</a>
             </nav>
-        </aside>
+        </header>
 
         <!-- Main content -->
         <main class="flex-1 p-10 overflow-auto">
-            <h2 class="text-4xl font-semibold mb-6">Gallery</h2>
+            <h2 class="text-4xl font-semibold mb-6" style="font-family: 'Lovelo Juno', sans-serif;">Gallery</h2>
 
             <!-- Photo Gallery Section -->
             <div class="relative max-w-full mx-auto">
@@ -49,8 +52,8 @@
                             </div>
                             <!-- Comment Section -->
                             <div class="mt-2">
-                                <textarea class="w-full p-3 border border-gray-300 rounded-md" rows="3" placeholder="Leave a comment..."></textarea>
-                                <button class="mt-2 w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700">Submit Comment</button>
+                                <textarea class="w-full p-3 border border-gray-300 rounded-md" rows="3" placeholder="Leave a comment..." style="font-family: 'Fira Code', monospace;"></textarea>
+                                <button class="w-full bg-[#362c24] text-white p-3 rounded-md hover:bg-[#14110d]" style="font-family: 'Lovelo Juno', sans-serif;">Submit Comment</button>
                             </div>
                         </div>
                     </div>
