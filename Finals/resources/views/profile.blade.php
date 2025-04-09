@@ -28,7 +28,7 @@
                 Login or Sign Up
             </h2>
 
-            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center" style="font-family: 'Lovelo Juno', sans-serif;">
                 <h3 class="text-2xl font-medium mb-6 text-[#14110d]">Continue as:</h3>
                 <div class="flex space-x-4 justify-center">
                     <button class="w-1/2 bg-[#bbafa1] text-white p-3 rounded-md hover:bg-[#a99e91] transition">
@@ -40,7 +40,7 @@
                 </div>
 
                 <!-- Optional Info Section -->
-                <p class="text-sm text-gray-500 mt-6">Don't have an account? Click Sign Up to get started!</p>
+                <p class="text-sm text-gray-500 mt-6" style="font-family: 'Fira Code', monospace;">Don't have an account? Click Sign Up to get started!</p>
             </div>
         </main>
     </div>
