@@ -23,69 +23,83 @@
         </header>
 
         <!-- Main content -->
-        <main class="flex-1 p-10 overflow-auto">
+        <main class="flex-1 p-10">
             <h2 class="text-4xl font-semibold mb-6" style="font-family: 'Lovelo Juno', sans-serif;">Gallery</h2>
-
-            <!-- Photo Gallery Section -->
-            <div class="relative max-w-full mx-auto">
-                <!-- Left Arrow -->
-                <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-md hover:bg-blue-700">
-                    &#10094;
-                </button>
-
-                <!-- Photo Gallery -->
-                <div class="flex overflow-hidden">
-                    <div class="w-full flex-shrink-0 p-4">
-                        <img src="https://via.placeholder.com/500x300" alt="Photographer 1" class="w-full h-auto rounded-lg shadow-lg">
-                        <!-- Rating and Comment Section -->
-                        <div class="mt-3">
-                            <div class="flex items-center">
-                                <!-- Star Rating -->
-                                <div class="flex space-x-1">
-                                    <span class="text-yellow-500">&#9733;</span>
-                                    <span class="text-yellow-500">&#9733;</span>
-                                    <span class="text-yellow-500">&#9733;</span>
-                                    <span class="text-gray-400">&#9733;</span>
-                                    <span class="text-gray-400">&#9733;</span>
-                                </div>
-                                <span class="ml-2 text-sm text-gray-600">3/5</span>
-                            </div>
-                            <!-- Comment Section -->
-                            <div class="mt-2">
-                                <textarea class="w-full p-3 border border-gray-300 rounded-md" rows="3" placeholder="Leave a comment..." style="font-family: 'Fira Code', monospace;"></textarea>
-                                <button class="w-full bg-[#362c24] text-white p-3 rounded-md hover:bg-[#14110d]" style="font-family: 'Lovelo Juno', sans-serif;">Submit Comment</button>
-                            </div>
+        
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                @foreach ($photographers as $photographer)
+                    <div class="bg-white rounded-lg shadow-md p-4">
+                        <img src="{{ $photographer->image_url }}" alt="{{ $photographer->name }}" class="w-full h-48 object-cover rounded">
+                        <h3 class="text-xl mt-4 font-bold" style="font-family: 'Lovelo Juno', sans-serif;">{{ $photographer->name }}</h3>
+        
+                        <!-- Average Rating -->
+                        <div class="flex items-center mt-2">
+                            @php
+                                $average = $photographer->comments->avg('rating');
+                                $fullStars = floor($average);
+                                $emptyStars = 5 - $fullStars;
+                            @endphp
+                            @for ($i = 0; $i < $fullStars; $i++)
+                                <span class="text-yellow-500">&#9733;</span>
+                            @endfor
+                            @for ($i = 0; $i < $emptyStars; $i++)
+                                <span class="text-gray-400">&#9733;</span>
+                            @endfor
+                            <span class="ml-2 text-sm text-gray-600">{{ number_format($average, 1) }}/5</span>
                         </div>
-                    </div>
-                    <!-- Repeat for other photos -->
-                    <div class="w-full flex-shrink-0 p-4">
-                        <img src="https://via.placeholder.com/500x300" alt="Museum 2" class="w-full h-auto rounded-lg shadow-lg">
-                        <div class="mt-3">
-                            <div class="flex items-center">
-                                <div class="flex space-x-1">
-                                    <span class="text-yellow-500">&#9733;</span>
-                                    <span class="text-yellow-500">&#9733;</span>
-                                    <span class="text-gray-400">&#9733;</span>
-                                    <span class="text-gray-400">&#9733;</span>
-                                    <span class="text-gray-400">&#9733;</span>
-                                </div>
-                                <span class="ml-2 text-sm text-gray-600">2/5</span>
-                            </div>
-                            <div class="mt-2">
-                                <textarea class="w-full p-3 border border-gray-300 rounded-md" rows="3" placeholder="Leave a comment..."></textarea>
-                                <button class="mt-2 w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700">Submit Comment</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add more photos as needed -->
-                </div>
+        
+                        <!-- Comments -->
+                        <div class="mt-3 max-h-32 overflow-y-auto border p-2 rounded-md bg-gray-50">
+                            @foreach ($photographer->comments as $comment)
+                                <div class="mb-2">
+                                    <p class="text-sm"><strong>{{ $comment->name }}</strong>: {{ $comment->comment }}</p>
+                                    <div class="flex space-x-1 text-xs text-yellow-500">
+                                        @for ($i = 0; $i < $comment->rating; $i++)
+                                            &#9733;
+                                        @endfor
+                                    </div>
 
-                <!-- Right Arrow -->
-                <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-md hover:bg-blue-700">
-                    &#10095;
-                </button>
+                                    <!-- Edit and Delete Buttons -->
+                                    <div class="flex space-x-2 mt-2">
+                                        <form action="{{ route('gallery.editComment', $comment->id) }}" method="POST" class="w-full">
+                                            @csrf
+                                            <textarea name="comment" rows="2" class="w-full p-2 border rounded-md text-sm" required>{{ $comment->comment }}</textarea>
+                                            <select name="rating" required class="w-full p-2 border rounded-md text-sm">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <option value="{{ $i }}" {{ $i == $comment->rating ? 'selected' : '' }}>{{ $i }} Star{{ $i > 1 ? 's' : '' }}</option>
+                                                @endfor
+                                            </select>
+                                            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Update</button>
+                                        </form>
+
+                                        <!-- Delete Button -->
+                                        <form action="{{ route('gallery.deleteComment', $comment->id) }}" method="POST" class="w-full mt-2">
+                                            @csrf
+                                            <button type="submit" class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Comment Form -->
+                        <form action="{{ route('gallery.comment', $photographer->id) }}" method="POST" class="mt-4 space-y-2">
+                            @csrf
+                            <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border rounded-md text-sm">
+                            <textarea name="comment" rows="2" placeholder="Leave a comment..." class="w-full p-2 border rounded-md text-sm" required></textarea>
+                            <select name="rating" required class="w-full p-2 border rounded-md text-sm">
+                                <option value="">Rate</option>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <option value="{{ $i }}">{{ $i }} Star{{ $i > 1 ? 's' : '' }}</option>
+                                @endfor
+                            </select>
+                            <button class="w-full bg-[#362c24] text-white py-2 rounded-md hover:bg-[#14110d]" style="font-family: 'Lovelo Juno', sans-serif;">Submit</button>
+                        </form>
+                    </div>
+                @endforeach
             </div>
         </main>
+        
     </div>
 </body>
 </html>
