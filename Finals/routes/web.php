@@ -16,8 +16,8 @@ Route::middleware('auth')->group(function () {
     // Gallery route
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
     Route::post('gallery/{id}/comment', [GalleryController::class, 'storeComment'])->name('gallery.comment');
-Route::post('comment/{commentId}/edit', [GalleryController::class, 'editComment'])->name('gallery.editComment');
-Route::post('comment/{commentId}/delete', [GalleryController::class, 'deleteComment'])->name('gallery.deleteComment');
+    Route::post('comment/{commentId}/edit', [GalleryController::class, 'editComment'])->name('gallery.editComment');
+    Route::post('comment/{commentId}/delete', [GalleryController::class, 'deleteComment'])->name('gallery.deleteComment');
 
     // Booking route
     Route::get('/booking', [BookingController::class, 'index'])->name('booking');

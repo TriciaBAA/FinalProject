@@ -16,25 +16,23 @@ class GalleryController extends Controller
 
     public function storeComment(Request $request, $id)
     {
-        // Validate the incoming request
         $request->validate([
-            'name' => 'required|string|max:100', // Ensure the name is provided
-            'comment' => 'required|string', // Ensure the comment is not empty
-            'rating' => 'required|integer|min:1|max:5', // Rating must be between 1 and 5
+            'name' => 'required|string|max:100',
+            'comment' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
-
-        // Create the comment using the PhotographerComment model
+    
         PhotographerComment::create([
             'photographer_id' => $id,
-            'name' => $request->name, // Take the 'name' from the request
+            'name' => $request->name,
             'comment' => $request->comment,
             'rating' => $request->rating,
+            'user_id' => auth()->id(), // Associate the comment with the authenticated user
         ]);
-
-        // Optionally, redirect back with a success message
-        return back()->with('success', 'Comment added successfully!');
-    }
     
+        return back();
+    }
+
     // Edit Comment
     public function editComment(Request $request, $commentId)
     {
