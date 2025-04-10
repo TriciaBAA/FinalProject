@@ -58,6 +58,28 @@
                 Update Profile
             </button>
 
+            <!-- Bookings Section -->
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold text-[#14110d] mb-4" style="font-family: 'Lovelo Juno', sans-serif;">
+                    My Bookings
+                </h3>
+
+                @if($bookings->isEmpty())
+                    <p class="text-lg text-gray-500">You have no bookings yet.</p>
+                @else
+                    <ul class="space-y-4">
+                        @foreach($bookings as $booking)
+                            <li class="bg-white p-4 rounded-lg shadow-md">
+                                <h4 class="text-xl font-medium text-[#14110d]">{{ $booking->photographer->name }} - {{ $booking->museum->name }}</h4>
+                                <p class="text-sm text-gray-500">Date: {{ $booking->date->format('F j, Y') }}</p>
+                                <p class="text-sm text-gray-500">Number of People: {{ $booking->number_of_people }}</p>
+                                <p class="text-sm text-gray-500">Special Requests: {{ $booking->special_requests ?? 'None' }}</p>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif  
+            </div>
+
             <!-- Logout Button -->
             <form action="{{ route('logout') }}" method="POST" class="mt-4">
                 @csrf

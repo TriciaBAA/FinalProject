@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth\RegisterController;
 // Protected Routes (Require Authentication)
 Route::middleware('auth')->group(function () {
     // Profile route
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
     // Gallery route
@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 
     // Booking route
     Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+    Route::post('/booking', [BookingController::class, 'store'])->name('storeBooking');
 
 });
 

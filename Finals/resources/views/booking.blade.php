@@ -25,7 +25,8 @@
         <!-- Main content -->
         <main class="flex-1 p-10 overflow-auto">
             <h2 class="text-4xl font-semibold mb-6" style="font-family: 'Lovelo Juno', sans-serif;">Book Your Photographer!</h2>
-            <form action="#" method="POST" class="space-y-6 max-w-full mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <form action="{{ route('storeBooking') }}" method="POST" class="space-y-6 max-w-full mx-auto bg-white p-8 rounded-lg shadow-lg">
+                @csrf
                 <!-- Photographer Selection -->
                 <div class="space-y-2">
                     <label for="photographer" class="block font-medium text-lg" style="font-family: 'Lovelo Juno', sans-serif;">Choose Photographer</label>
