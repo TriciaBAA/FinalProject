@@ -28,12 +28,6 @@
         </h2>
 
         <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-md text-center" style="font-family: 'Lovelo Juno', sans-serif;">
-            <!-- Profile Picture Section -->
-            <div class="mb-6">
-                <img src="{{ auth()->user()->profile_picture_url }}" alt="Profile Picture" class="w-32 h-32 rounded-full mx-auto mb-4">
-                <input type="file" class="block mx-auto text-sm text-[#bbafa1] cursor-pointer mb-4">
-                <p class="text-[#14110d] text-lg">Change Profile Picture</p>
-            </div>
 
             <!-- Name Section -->
             <div class="mb-6">
